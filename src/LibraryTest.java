@@ -34,4 +34,15 @@ public class LibraryTest {
         // if all available book is 0 then book is borrowed
         assertEquals(0, library.getAvailableBooks().size());
     }
+
+    // testing return book feature
+    @Test 
+    public void testReturnBook()
+    {
+            library.addBook(samplebook);
+            library.borrowBook("123456");
+            library.returnBook("123456");
+            assertEquals(1, library.getAvailableBooks().size());
+
+        }
 }
