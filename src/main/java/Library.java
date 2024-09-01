@@ -55,6 +55,16 @@ public class Library {
             }
         }
         return availableBooks;
-    }
+ 
+   }
 
+   public void returnBook(String isbn)
+   {
+    Book book =findBook(isbn);
+
+    if (book.isAvailable()) {
+        throw new IllegalArgumentException("Book with" + book.getIsbn() + "is not borrowed"); 
+     }
+     book.setAvailable(true);
+   }
 }

@@ -3,6 +3,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 
 public class LibraryTest {
@@ -24,10 +26,10 @@ public class LibraryTest {
         assertEquals(1, library.getAvailableBooks().size());
 
     }
-// testing Book is borrowed or not  
+
+    // testing Book is borrowed or not
     @Test
-    public void testBorrowBook()
-    {
+    public void testBorrowBook() {
 
         library.addBook(samplebook);
         library.borrowBook("123456");
@@ -36,13 +38,25 @@ public class LibraryTest {
     }
 
     // testing return book feature
-    @Test 
-    public void testReturnBook()
-    {
-            library.addBook(samplebook);
-            library.borrowBook("123456");
-            library.returnBook("123456");
-            assertEquals(1, library.getAvailableBooks().size());
+    @Test
+    public void testReturnBook() {
+        library.addBook(samplebook);
+        library.borrowBook("123456");
+        library.returnBook("123456");
+        assertEquals(1, library.getAvailableBooks().size());
 
-        }
+    }
+
+    // testing available book feature
+    @Test
+    public void testAvailableBook()
+    {
+        library.addBook(samplebook);
+        library.addBook(new Book("123457", "how to make friends ", " Dale Carnegie", 1936));
+        library.borrowBook("123456");
+        List<Book> books = library.getAvailableBooks();
+        // test that list book returned by getAvailableBooks true value
+        assertEquals( 1, books.size());
+        assertEquals("123457", books.get(0).getIsbn());
+    }
 }
