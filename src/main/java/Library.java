@@ -21,6 +21,7 @@ public class Library {
             }
         }
         books.add(book);
+        System.out.println("book is added with isbn: " + book.getIsbn());
     }
 
     // function for borrow Book
@@ -31,9 +32,10 @@ public class Library {
         if (!book.isAvailable()) {
             throw new IllegalArgumentException("Book with " + book.getIsbn() + "is not available");
         }
-        
+
         book.setAvailable(false);
-    
+        System.out.println("book is borrowed with isbn :" + isbn);
+
     }
 
     // function will return book with isbn equals to argument isbn
@@ -55,17 +57,30 @@ public class Library {
             }
         }
         return availableBooks;
- 
-   }
 
-//    function will return book which was borrowed  with given isbn
-   public void returnBook(String isbn)
-   {
-    Book book =findBook(isbn);
+    }
 
-    if (book.isAvailable()) {
-        throw new IllegalArgumentException("Book with" + book.getIsbn() + "is not borrowed"); 
-     }
-     book.setAvailable(true);
-   }
+    // function will return book which was borrowed with given isbn
+    public void returnBook(String isbn) {
+        Book book = findBook(isbn);
+
+        if (book.isAvailable()) {
+            throw new IllegalArgumentException("Book with" + book.getIsbn() + "is not borrowed");
+        }
+        book.setAvailable(true);
+        System.out.println("book is returned with isbn:" + isbn);
+    }
+
+    // function will iterate through available books and print each book information
+    public void viewAvailableBooks() {
+        List<Book> availablBook = getAvailableBooks();
+            if (availablBook.size() == 0) {
+                throw new IllegalArgumentException("0 book available");
+            }
+            System.err.println(" Available books are ::\n");
+        for (Book book : availablBook) {
+            System.err.println(" isbn:" + book.getIsbn() + "\n title:" + book.getTitle() + "\n author:" + book.getAuthor()
+                    + "\n publication Year:" + book.getPublicationYear() +  "\n \n");
+        }
+    }
 }
