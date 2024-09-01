@@ -74,13 +74,14 @@ public class Library {
     // function will iterate through available books and print each book information
     public void viewAvailableBooks() {
         List<Book> availablBook = getAvailableBooks();
-            if (availablBook.size() == 0) {
-                throw new IllegalArgumentException("0 book available");
-            }
-            System.err.println(" Available books are ::\n");
+        if (availablBook.size() == 0) {
+            throw new IllegalArgumentException("0 book available");
+        }
+        System.err.println(" Available books are ::\n");
         for (Book book : availablBook) {
-            System.err.println(" isbn:" + book.getIsbn() + "\n title:" + book.getTitle() + "\n author:" + book.getAuthor()
-                    + "\n publication Year:" + book.getPublicationYear() +  "\n \n");
+            System.err
+                    .println(" isbn:" + book.getIsbn() + "\n title:" + book.getTitle() + "\n author:" + book.getAuthor()
+                            + "\n publication Year:" + book.getPublicationYear() + "\n \n");
         }
     }
 }

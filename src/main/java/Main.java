@@ -12,14 +12,11 @@ public class Main {
 
         lib.addBook(b1);
         lib.addBook(b2);
-        
-
 
         lib.borrowBook("123456");
         lib.addBook(b3);
         lib.returnBook("123456");
         lib.viewAvailableBooks();
 
-    
     }
 }

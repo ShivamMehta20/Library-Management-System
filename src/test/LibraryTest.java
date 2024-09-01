@@ -1,3 +1,4 @@
+package test;
 import main.java.*;
 import org.junit.Test;
 
@@ -46,16 +47,16 @@ public class LibraryTest {
         assertEquals(1, library.getAvailableBooks().size());
 
     }
+
     // testing available book feature
-@Test
-public void testAvailableBook()
-{
-    library.addBook(samplebook);
-    library.addBook(new Book("123457", "how to make friends ", " Dale Carnegie", 1936));
-    library.borrowBook("123456");
-    List<Book> books = library.getAvailableBooks();
-    // test that list book returned by getAvailableBooks true value
-    assertEquals( 1, books.size());
-    assertEquals("123457", books.get(0).getIsbn());
-}
+    @Test
+    public void testAvailableBook() {
+        library.addBook(samplebook);
+        library.addBook(new Book("123457", "how to make friends ", " Dale Carnegie", 1936));
+        library.borrowBook("123456");
+        List<Book> books = library.getAvailableBooks();
+        // test that list book returned by getAvailableBooks true value
+        assertEquals(1, books.size());
+        assertEquals("123457", books.get(0).getIsbn());
+    }
 }
